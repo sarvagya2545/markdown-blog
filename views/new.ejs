@@ -1,4 +1,6 @@
-<%- include('partials/top'); %> 
+<%- include('partials/top'); %>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/markdown-it/12.0.6/markdown-it.min.js" integrity="sha512-7U8vY7c6UQpBNQOnBg3xKX502NAckvk70H1nWvh6W7izA489jEz+RCN3ntT1VMdXewaSKkOrEBegp/h6SPXrjw==" crossorigin="anonymous" defer></script>
+<script src="/js/new.js" defer></script>
 
     <%- include('partials/header', { links: links, title: 'Add post' }); %> 
 
@@ -7,10 +9,16 @@
         <label for="title" class="form-label">Title of the post</label>
         <input type="email" class="form-control" id="title">
         </div>
-        <div class="mb-3">
-            <label for="exampleFormControlTextarea1" class="form-label">Post content(markdown)</label>
-            <textarea class="form-control" id="exampleFormControlTextarea1" rows="15"></textarea>
+        <div class="mb-3 row">
+            <div class="col">
+                <label for="markdown" class="form-label">Post content(markdown)</label>
+                <textarea class="form-control" id="markdown" rows="15"></textarea>
+            </div>
+            <div class="col col-output">
+                <label for="markdown" class="form-label">Preview of post</label>
+                <div class="form-control" id="output"></div>
+            </div>
         </div>
-        <button type="submit" class="btn btn-primary">Create post</button>
+        <button type="submit" class="btn btn-primary">Publish post</button>
     </form>
 <%- include('partials/bottom'); %> 

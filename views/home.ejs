@@ -1,0 +1,22 @@
+<%- include('partials/top'); %> 
+
+    <%- include('partials/header', { links, title }); %> 
+    
+    <div class="posts">
+        <% for( let i = 0; i < posts.length; i++ ) { %>
+            <%- include('partials/blogpost'); %> 
+        <% } %>
+    </div>
+
+    <% if (!posts.length) { %>
+        <%- include('partials/nopost'); %> 
+    <% } %>
+        
+        
+    <% if (posts.length) { %>
+        <div class="d-flex flex-column justify-content-center my-3">
+            <button class="btn btn-outline-secondary">Load more</button>
+        </div>
+    <% } %>
+
+<%- include('partials/bottom'); %> 

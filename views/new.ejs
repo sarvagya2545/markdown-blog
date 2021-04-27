@@ -1,0 +1,16 @@
+<%- include('partials/top'); %> 
+
+    <%- include('partials/header', { links: links, title: 'Add post' }); %> 
+
+    <form method="POST" action="/new">
+        <div class="mb-3">
+        <label for="title" class="form-label">Title of the post</label>
+        <input type="email" class="form-control" id="title">
+        </div>
+        <div class="mb-3">
+            <label for="exampleFormControlTextarea1" class="form-label">Post content(markdown)</label>
+            <textarea class="form-control" id="exampleFormControlTextarea1" rows="15"></textarea>
+        </div>
+        <button type="submit" class="btn btn-primary">Create post</button>
+    </form>
+<%- include('partials/bottom'); %> 

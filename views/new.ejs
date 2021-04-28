@@ -3,7 +3,7 @@
 <script src="/js/new.js" defer></script>
 <%- include('partials/header', { links: links, title: 'Add post' }); %> 
 
-    <form method="POST" action="/new" id="formNew">
+    <form method="POST" action="/posts/new" id="formNew">
         <div class="mb-3">
             <label for="title" class="form-label">Title of the post</label>
             <input type="text" class="form-control" id="title" name="title">

@@ -5,16 +5,20 @@
 
     <form method="POST" action="/new" id="formNew">
         <div class="mb-3">
-        <label for="title" class="form-label">Title of the post</label>
-        <input type="text" class="form-control" id="title" name="title">
+            <label for="title" class="form-label">Title of the post</label>
+            <input type="text" class="form-control" id="title" name="title">
+        </div>
+        <div class="mb-3">
+            <label for="description" class="form-label" tabindex="-1">Description</label>
+            <textarea class="form-control" rows="2" name="description" form="formNew"></textarea>
         </div>
         <div class="mb-3 row">
             <div class="col">
-                <label for="markdown" class="form-label" tabindex="-1">Post content(markdown)</label>
+                <label for="content" class="form-label" tabindex="-1">Post content(markdown)</label>
                 <textarea class="form-control" id="markdown" rows="15" name="content" form="formNew"></textarea>
             </div>
             <div class="col col-output">
-                <label for="markdown" class="form-label">Preview of post</label>
+                <label for="output" class="form-label">Preview of post</label>
                 <div class="form-control" id="output"></div>
             </div>
         </div>

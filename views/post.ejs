@@ -1,0 +1,9 @@
+<%- include('partials/top'); %> 
+<link rel="stylesheet" href="/js/new.js">
+
+<%- include('partials/header', { links, title: post.title }); %> 
+
+<%- post.sanitizedHtml %>
+
+
+<%- include('partials/bottom'); %> 

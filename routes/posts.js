@@ -11,8 +11,8 @@ router.route('/new')
     .post(postsController.addPost)
 ;
 
-router.route('/:id')
-    .get(postsController.getPostById)
+router.route('/:slug')
+    .get(postsController.getPostBySlug)
 ;
 
 

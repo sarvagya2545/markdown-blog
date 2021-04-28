@@ -3,7 +3,8 @@ const app = express();
 const mongoose = require('mongoose');
 
 app.set('view engine', 'ejs');
-app.use(express.static('public'))
+app.use(express.static('public'));
+app.use(express.urlencoded({ extended: true }));
 
 const Post = require('./models/Post');
 
@@ -43,9 +44,10 @@ app.get('/new', async (req,res) => {
 });
 
 app.post('/new', async(req,res) => {
-    try {
-        
-        const { title, content } = req.body;
+    try {        
+        // const { title, content } = req.body;
+
+        console.log('body', req.body);
 
     } catch (error) {
         console.log(error)

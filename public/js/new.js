@@ -21,11 +21,14 @@ mdInputContainer.addEventListener('keydown', function(e) {
       this.selectionStart =
         this.selectionEnd = start + 1;
     }
-  });
+});
 
+mdInputContainer.addEventListener('input', e => updatePreview(e))
 
-mdInputContainer.addEventListener('input', (e) => {
-    let val = md.render(e.target.value);
-    mdOutputContainer.innerHTML = '';
-    mdOutputContainer.insertAdjacentHTML('beforeEnd', val);
-})
+function updatePreview(e, text) {
+  let val = md.render(e ? e.target.value : text);
+  mdOutputContainer.innerHTML = '';
+  mdOutputContainer.insertAdjacentHTML('beforeEnd', val);
+}
+
+updatePreview(null, mdInputContainer.value)

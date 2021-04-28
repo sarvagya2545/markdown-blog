@@ -11,6 +11,11 @@ router.route('/new')
     .post(postsController.addPost)
 ;
 
+router.route('/:slug/update')
+    .get(postsController.updatePostPage)
+    .post(postsController.updatePost)
+;
+
 router.route('/:slug')
     .get(postsController.getPostBySlug)
 ;

@@ -28,7 +28,7 @@ module.exports = {
                     route: '/'
                 }
             ]
-            res.render('new', { links });
+            res.render('new', { links, update: false, title: false, description: false, markdown: false });
         } catch (error) {
             console.log(error)
             res.send(error);
@@ -97,6 +97,43 @@ module.exports = {
         } catch (error) {
             console.log(error)
             res.send('No post found / link broken');
+        }
+    },
+    updatePostPage: async (req,res) => {
+        try {
+            const slug = req.params.slug;
+            const post = await Post.findOne({ slug });
+
+            const links = [
+                {
+                    name: 'Discard changes',
+                    route: `/${slug}`
+                }
+            ]
+            res.render('new', { links, post, update: true });
+        } catch (error) {
+            console.log(error)
+            res.send(error);
+        }
+    },
+    updatePost: async (req,res) => {
+        try {
+            console.log(req.body);
+            const { slug } = req.params;
+            const { title, description, content } = req.body;
+
+            await Post.findOneAndUpdate({ slug }, { 
+                title, 
+                description, 
+                content, 
+                sanitizedHtml: DOMPurify.sanitize(md.render(content)) 
+            });
+
+            res.redirect(`/posts/${slug}`);
+
+        } catch (error) {
+            console.log(error)
+            res.send(error);
         }
     }
 }

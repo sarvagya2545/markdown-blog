@@ -1,27 +1,29 @@
 <%- include('partials/top'); %>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/markdown-it/12.0.6/markdown-it.min.js" integrity="sha512-7U8vY7c6UQpBNQOnBg3xKX502NAckvk70H1nWvh6W7izA489jEz+RCN3ntT1VMdXewaSKkOrEBegp/h6SPXrjw==" crossorigin="anonymous" defer></script>
 <script src="/js/new.js" defer></script>
-<%- include('partials/header', { links: links, title: 'Add post' }); %> 
+<%- include('partials/header', { links: links, title: update ? 'Edit post' : 'Add post'}); %> 
 
-    <form method="POST" action="/posts/new" id="formNew">
+    <form method="POST" action="<%= update ? `/posts/${post.slug}/update` : '/posts/new' %>" id="formNew">
         <div class="mb-3">
             <label for="title" class="form-label">Title of the post</label>
-            <input type="text" class="form-control" id="title" name="title">
+            <input type="text" class="form-control" id="title" name="title" 
+                value="<%= update ? post.title : '' %>"
+            >
         </div>
         <div class="mb-3">
             <label for="description" class="form-label" tabindex="-1">Description</label>
-            <textarea class="form-control" rows="2" name="description" form="formNew"></textarea>
+            <textarea class="form-control" rows="2" name="description" form="formNew"><%= update ? post.description : '' %></textarea>
         </div>
         <div class="mb-3 row">
             <div class="col">
                 <label for="content" class="form-label" tabindex="-1">Post content(markdown)</label>
-                <textarea class="form-control" id="markdown" rows="15" name="content" form="formNew"></textarea>
+                <textarea class="form-control" id="markdown" rows="15" name="content" form="formNew"><%= update ? post.content : '' %></textarea>
             </div>
             <div class="col col-output">
                 <label for="output" class="form-label">Preview of post</label>
                 <div class="form-control" id="output"></div>
             </div>
         </div>
-        <button type="submit" class="btn btn-primary">Publish post</button>
+        <button type="submit" class="btn btn-primary"><%= update ? 'Save changes' : 'Publish post' %></button>
     </form>
 <%- include('partials/bottom'); %> 

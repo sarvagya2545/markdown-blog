@@ -1,11 +1,34 @@
 const mongoose = require('mongoose');
 
 const postSchema = mongoose.Schema({
-    title: String,
-    description: String,
-    content: String,
-    sanitizedHtml: String,
-    slug: String
+    title: {
+        type: String,
+        required: true
+    },
+    description: {
+        type: String
+    },
+    content: {
+        type: String,
+        required: true
+    },
+    sanitizedHtml: {
+        type: String,
+        required: true
+    },
+    slug: {
+        type: String,
+        required: true,
+        unique: true
+    },
+    createdAt: {
+        type: Date,
+        default: Date.now
+    },
+    lastUpdated: {
+        type: Date,
+        default: Date.now
+    }
 });
 
 const Post = mongoose.model('post', postSchema);
